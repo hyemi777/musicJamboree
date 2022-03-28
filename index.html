@@ -7,6 +7,19 @@
     <title>Music</title>
 </head>
 <body>
-    
+    <button onclick="player('bb.m4a')">Play Song</button>
+    <div id="juke">
+    </div>
 </body>
 </html>
+
+<script>
+    // json for the top 50 songs
+    let url = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/50/songs.json";
+    // picks a random song 
+    let randomNum = Math.floor(Math.random() * 50);
+    let juke = document.querySelector('#juke');
+    function player(tune){
+        juke.innerHTML = "<audio controls autoplay src=" + tune + " type='audio/m4a'></audio>";
+    }
+</script>
