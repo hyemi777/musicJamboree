@@ -32,16 +32,9 @@ h1 {
 }
 
 
-h2 {
+h6{
     font-family: 'Playfair Display', serif;
     color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
- 
-}
-
-h3 {
-    font-family: 'Playfair Display', serif; 
 }
 
 #start{
@@ -64,6 +57,7 @@ h3 {
 }
 
 button {
+    display: inline-block;
     font-size: 20px;
     font-family: 'Playfair Display', serif; 
     background: #9046CF;
@@ -84,3 +78,23 @@ button:hover {
     box-shadow: 0 9px #FF9E1F;
     border: 1px solid #FF9E1F;
 }
+
+#images{
+    border-radius: 50%;
+}
+
+#songButtons{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    box-shadow: none;
+}
+
+#songBox{
+    display: inline-block;
+    padding: 50px;
+}
+

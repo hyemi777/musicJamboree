@@ -26,13 +26,19 @@
     var playButton = document.querySelector("#playIt"); 
     var divLoad = document.querySelector('#maindiv');
     document.getElementById("playIt").style.visibility="hidden"
+    var isPlaying = false;
 
-    function playit(song) {
+
+function playit(song) {
+        isPlaying = true;
         juke.innerHTML =
-        "<audio controls autoplay src=" + song + " type='audio/m4a'></audio>";
+        "<audio id = 'myAudio' controls autoplay src=" + song + " type='audio/m4a'></audio>"; 
     }
     playButton.addEventListener('click', function(){
-        playit("https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/59/2b/98/592b9888-c00d-98b1-41c8-6f207fa704f1/mzaf_2783580688957198545.plus.aac.p.m4a");
+        if (isPlaying = true){
+            playit(null);
+        }
+            playit("https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/59/2b/98/592b9888-c00d-98b1-41c8-6f207fa704f1/mzaf_2783580688957198545.plus.aac.p.m4a");
     });
     
     function qa(){
@@ -43,11 +49,10 @@
         $.getJSON("https://itunes.apple.com/search?term=the+arianagrande&limit=45",
             function (data) {
                 for (i = 0; i < data.results.length; i++) {
-                content.innerHTML +=
-                    "<img id='images' src='" + data.results[i].artworkUrl100 + "'><br>" + 
-                    data.results[i].artistName + "<br>" +
-                    data.results[i].trackName +
-                    "<br><button onclick='playit(\"" + data.results[i].previewUrl + "\")'>Play it</button><br><br>" ;
+                content.innerHTML += 
+                    "<div id = songBox> <h6>" + data.results[i].artistName + "</h6>" +
+                    "<h6>" + data.results[i].trackName +
+                    "</h6><br><button id = 'songButtons' onclick='playit(\"" + data.results[i].previewUrl + "\")'><img id='images' src='" + data.results[i].artworkUrl100 + "'></button><br><br> </div>" ;
                 }
                 
             }
