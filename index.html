@@ -4,49 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="stylesheet.css" rel="stylesheet">
     <title>Music</title>
 </head>
 <body>
-    <button onclick="player('bb.m4a')">Play Song</button>
-    <div id="juke"></div>
-
-    <div id="photo">
-        <img src="https://cdn.vox-cdn.com/uploads/chorus_asset/file/22980829/g_encanto_1_21512_9af56359.jpeg">
-    </div>
+    <img id="newPic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_0U7xRFX5M-mnAgCORX-SGXUMnvmxkLbSg&usqp=CAU">
     <div id="disappear">
-        <button id="start"onclick="qa()">Start Music Quiz!</button><br>
+        <button id="start" onclick="qa()">Explore her discography</button><br>
     </div>
     <div id="maindiv"></div>
+    <div id="soundz"></div>
+    <button id="playIt">Play it</button><br>
 </body>
 </html>
 
 <script>
-    // json for the top 50 songs
-    //let url = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/50/songs.json";
     // picks a random song 
     let randomNum = Math.floor(Math.random() * 50);
-    
-
-    //let tune = "https://itunes.apple.com/search?term=encanto&limit=45";
-    let juke = document.querySelector('#juke');
-    function player(tune){
-        juke.innerHTML = "<audio controls autoplay src=" + tune + " type='audio/m4a'></audio>";
-    }
-
-    
-    var theAnswer = [];
+    let juke = document.querySelector("#soundz");
+    var playButton = document.querySelector("#playIt"); 
     var divLoad = document.querySelector('#maindiv');
-    
+    document.getElementById("playIt").style.visibility="hidden"
 
+    function playit(song) {
+        juke.innerHTML =
+        "<audio controls autoplay src=" + song + " type='audio/m4a'></audio>";
+    }
+    playButton.addEventListener('click', function(){
+        playit("https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/59/2b/98/592b9888-c00d-98b1-41c8-6f207fa704f1/mzaf_2783580688957198545.plus.aac.p.m4a");
+    });
     
     function qa(){
-        divLoad.innerHTML = "";
-        $.getJSON('https://itunes.apple.com/search?term=encanto&limit=45', function(data) {
-            document.getElementById("disappear").style.visibility="hidden";
-            document.getElementById("photo").style.visibility="hidden";
-
-        });
+        let juke = document.querySelector("#soundz");
+        let content = document.querySelector("#maindiv");
+        document.getElementById("disappear").style.visibility="hidden";
+        document.getElementById("newPic").style.visibility="visible";
+        $.getJSON("https://itunes.apple.com/search?term=the+arianagrande&limit=45",
+            function (data) {
+                for (i = 0; i < data.results.length; i++) {
+                content.innerHTML +=
+                    "<img id='images' src='" + data.results[i].artworkUrl100 + "'><br>" + 
+                    data.results[i].artistName + "<br>" +
+                    data.results[i].trackName +
+                    "<br><button onclick='playit(\"" + data.results[i].previewUrl + "\")'>Play it</button><br><br>" ;
+                }
+                
+            }
+        );
 
     }
+    
+    
 </script>
