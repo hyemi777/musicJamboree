@@ -1,0 +1,86 @@
+body {
+    background:#C49EE6;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+}
+
+#subhead {
+    text-align: center;
+}
+
+#feedback {
+    margin-top: 30%;
+    position: absolute;
+    left: 600px;
+    top: 200px;
+    color: red;
+    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+}
+
+#photo {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    left: 45%;
+    top: 27%;
+}
+
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+ 
+}
+
+h3 {
+    font-family: 'Playfair Display', serif; 
+}
+
+#start{
+    position: fixed;
+    left: 40%;
+    top: 50%;
+    font-size: 50px;
+    font-weight: 500;
+    color: white;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+#maindiv {
+    
+    margin: 40px;
+    
+}
+
+button {
+    font-size: 20px;
+    font-family: 'Playfair Display', serif; 
+    background: #9046CF;
+    border: 1px solid #752EB2;
+    color: white;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 9px #752EB2;
+}
+
+button:hover {
+    color: white;
+    background: #FFB85C;
+    box-shadow: 0 9px #FF9E1F;
+    border: 1px solid #FF9E1F;
+}
